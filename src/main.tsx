@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './globals.css'
 import { NextUIProvider } from '@nextui-org/react'
+import { ThemeProvider } from 'next-themes'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<NextUIProvider>
-			<App />
+			<ThemeProvider attribute="class" defaultTheme="dark">
+				<App />
+			</ThemeProvider>
 		</NextUIProvider>
 	</React.StrictMode>
 )
