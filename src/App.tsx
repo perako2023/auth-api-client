@@ -1,10 +1,21 @@
 import ThemeSwitch from './components/ThemeSwitch'
+import axios from 'axios'
+import { Toaster } from 'react-hot-toast'
+import AuthProvider from './auth/AuthContext'
+
+axios.defaults.baseURL = import.meta.env.VITE_API_ENDPOINT
+axios.defaults.withCredentials = true
 
 export default function App() {
 	return (
-		<div className="grid h-screen place-items-center">
+		<>
+			<Toaster position="top-center" toastOptions={{ duration: 5 * 1000 }} />
 			<ThemeSwitch className="fixed right-2 top-2 z-10" />
-			<h1>Spr Extension</h1>
-		</div>
+			<div className="grid h-screen place-items-center">
+				<AuthProvider>
+					<h1>Spr Extension</h1>
+				</AuthProvider>
+			</div>
+		</>
 	)
 }
